@@ -4,6 +4,7 @@ const express = require("express");
 const airoutes = require("../src/routes/ai.routes")
 
 const app =  express();
+app.use(express.json())
 
 app.get('/', (req, res) => {
     res.send('Hello World')

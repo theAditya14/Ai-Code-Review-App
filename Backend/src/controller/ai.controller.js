@@ -2,7 +2,7 @@ const aiService = require("../service.js/ai.service")
 
 async function aiConteroller(req,res) {
      
-      const prompt = req.query.prompt;
+      const prompt = req.body.prompt;
 
       if(!prompt ){
         return res.status(400).send("prompt is required")
