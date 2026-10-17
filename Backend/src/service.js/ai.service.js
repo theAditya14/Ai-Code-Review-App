@@ -1,17 +1,17 @@
-import { GoogleGenAI } from "@google/genai";
 
-const ai = new GoogleGenAI({apiKey: "process.env.Gemini_API_Key"});
+const { GoogleGenAI } = require("@google/genai");
 
-
-
-
-
-
-async function generateContent(prompt){
-const interaction = await ai.interactions.create({
-  model: "gemini-3.8-flash",
-  input: prompt,
+const ai = new GoogleGenAI({
+  apiKey: process.env.Gemini_API_Key,
 });
 
-return interaction.output_text;
+async function generateContent(prompt) {
+  const response = await ai.models.generateContent({
+    model: "gemini-3.8-flash",
+    contents: prompt,
+  });
+
+  return response.text;
 }
+
+module.exports = generateContent;
